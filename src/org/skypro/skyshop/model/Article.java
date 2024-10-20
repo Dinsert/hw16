@@ -22,7 +22,7 @@ public class Article implements Searchable {
 
     @Override
     public String getName() {
-        return toString();
+        return title;
     }
 
     @Override

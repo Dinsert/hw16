@@ -1,4 +1,4 @@
-package org.skypro.skyshop.search;
+package org.skypro.skyshop.service;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -6,6 +6,8 @@ import static java.util.Objects.nonNull;
 import org.skypro.skyshop.model.Searchable;
 
 public class SearchEngine {
+
+    private static final int MAX_SEARCH_RESULTS = 5;
 
     private final Searchable[] elements;
 
@@ -15,17 +17,16 @@ public class SearchEngine {
 
     public Searchable[] search(String string) {
         int count = 0;
-        Searchable[] searchables = new Searchable[5];
+        Searchable[] searchResult = new Searchable[5];
         for (Searchable element : elements) {
             if (nonNull(element) && element.searchTerm().contains(string)) {
-                searchables[count] = element;
-                count++;
-                if (count >= searchables.length) {
+                searchResult[count++] = element;
+                if (count >= MAX_SEARCH_RESULTS) {
                     break;
                 }
             }
         }
-        return searchables;
+        return searchResult;
     }
 
     public void add(Searchable searchable) {

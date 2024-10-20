@@ -1,4 +1,4 @@
-package org.skypro.skyshop.basket;
+package org.skypro.skyshop.service;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -9,15 +9,16 @@ public class ProductBasket {
 
     private final Product[] products = new Product[5];
 
-    private boolean isEmptyBasket = true;
+    private boolean isBasketFull = true;
 
     public void addProduct(Product product) {
         for (int i = 0; i < products.length; i++) {
             if (isNull(products[i])) {
                 products[i] = product;
+                isBasketFull = false;
                 break;
             }
-            if (i == products.length - 1) {
+            if (isBasketFull) {
                 System.out.println("Невозможно добавить продукт");
             }
         }
@@ -35,6 +36,7 @@ public class ProductBasket {
 
     public void printBasketContents() {
         int count = 0;
+        boolean isEmptyBasket = true;
         for (Product product : products) {
             if (nonNull(product)) {
                 isEmptyBasket = false;
@@ -42,19 +44,19 @@ public class ProductBasket {
                 if (product.isSpecial()) {
                     count++;
                 }
-            } else if (isEmptyBasket) {
-                System.out.println("В корзине пусто");
-                return;
             }
         }
-        System.out.println("Итого: " + getTotalBasketValue());
-        System.out.println("Специальных товаров: " + count);
-        isEmptyBasket = true;
+        if (!isEmptyBasket) {
+            System.out.println("Итого: " + getTotalBasketValue());
+            System.out.println("Специальных товаров: " + count);
+        } else {
+            System.out.println("В корзине пусто");
+        }
     }
 
-    public boolean checkIfProductIsByBasket(String string) {
+    public boolean checkProductContainsInBasket(String productName) {
         for (Product product : products) {
-            if (nonNull(product) && string.equals(product.getNameProduct())) {
+            if (nonNull(product) && productName.equals(product.getNameProduct())) {
                 return true;
             }
         }

@@ -2,12 +2,12 @@ package org.skypro.skyshop;
 
 import java.util.Arrays;
 import org.skypro.skyshop.model.Article;
-import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.service.ProductBasket;
 import org.skypro.skyshop.model.DiscountedProduct;
 import org.skypro.skyshop.model.FixPriceProduct;
 import org.skypro.skyshop.model.Product;
 import org.skypro.skyshop.model.SimpleProduct;
-import org.skypro.skyshop.search.SearchEngine;
+import org.skypro.skyshop.service.SearchEngine;
 import org.skypro.skyshop.model.Searchable;
 
 public class App {
@@ -31,12 +31,12 @@ public class App {
 
         productBasket.printBasketContents();
         System.out.println(productBasket.getTotalBasketValue());
-        System.out.println(productBasket.checkIfProductIsByBasket("Course Java"));
-        System.out.println(productBasket.checkIfProductIsByBasket("Course С"));
+        System.out.println(productBasket.checkProductContainsInBasket("Course Java"));
+        System.out.println(productBasket.checkProductContainsInBasket("Course С"));
         productBasket.clearBasket();
         productBasket.printBasketContents();
         System.out.println(productBasket.getTotalBasketValue());
-        System.out.println(productBasket.checkIfProductIsByBasket("Course Python"));
+        System.out.println(productBasket.checkProductContainsInBasket("Course Python"));
 
         Searchable[] searchables = {
                 new SimpleProduct("Course Java", 200_000),
@@ -58,7 +58,7 @@ public class App {
 
         System.out.println(Arrays.toString(searchEngine.search("Course")));
         System.out.println(Arrays.toString(searchEngine.search("rules")));
-        System.out.println(Arrays.toString(searchEngine.search("Course Kotlin")));
+        System.out.println(Arrays.toString(searchEngine.search("Course C++")));
 
     }
 
