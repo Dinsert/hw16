@@ -5,7 +5,7 @@ import static java.util.Objects.nonNull;
 
 public class SearchEngine {
 
-    Searchable[] elements;
+    private final Searchable[] elements;
 
     public SearchEngine(int size) {
         elements = new Searchable[size];
