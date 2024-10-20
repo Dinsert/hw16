@@ -3,6 +3,8 @@ package org.skypro.skyshop.search;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
+import org.skypro.skyshop.model.Searchable;
+
 public class SearchEngine {
 
     private final Searchable[] elements;
@@ -18,7 +20,7 @@ public class SearchEngine {
             if (nonNull(element) && element.searchTerm().contains(string)) {
                 searchables[count] = element;
                 count++;
-                if (count > 4) {
+                if (count >= searchables.length) {
                     break;
                 }
             }

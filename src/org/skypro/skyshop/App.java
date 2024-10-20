@@ -3,12 +3,12 @@ package org.skypro.skyshop;
 import java.util.Arrays;
 import org.skypro.skyshop.model.Article;
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.DiscountedProduct;
-import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.model.DiscountedProduct;
+import org.skypro.skyshop.model.FixPriceProduct;
+import org.skypro.skyshop.model.Product;
+import org.skypro.skyshop.model.SimpleProduct;
 import org.skypro.skyshop.search.SearchEngine;
-import org.skypro.skyshop.search.Searchable;
+import org.skypro.skyshop.model.Searchable;
 
 public class App {
 
@@ -31,7 +31,7 @@ public class App {
 
         productBasket.printBasketContents();
         System.out.println(productBasket.getTotalBasketValue());
-        System.out.println(productBasket.checkIfProductIsByBasket("Course С#"));
+        System.out.println(productBasket.checkIfProductIsByBasket("Course Java"));
         System.out.println(productBasket.checkIfProductIsByBasket("Course С"));
         productBasket.clearBasket();
         productBasket.printBasketContents();

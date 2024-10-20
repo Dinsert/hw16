@@ -3,11 +3,13 @@ package org.skypro.skyshop.basket;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
-import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.model.Product;
 
 public class ProductBasket {
 
     private final Product[] products = new Product[5];
+
+    private boolean isEmptyBasket = true;
 
     public void addProduct(Product product) {
         for (int i = 0; i < products.length; i++) {
@@ -35,28 +37,19 @@ public class ProductBasket {
         int count = 0;
         for (Product product : products) {
             if (nonNull(product)) {
+                isEmptyBasket = false;
                 System.out.println(product);
                 if (product.isSpecial()) {
                     count++;
                 }
-            } else {
+            } else if (isEmptyBasket) {
                 System.out.println("В корзине пусто");
                 return;
             }
         }
-        if (isProductByBasket()) {
-            System.out.println("Итого: " + getTotalBasketValue());
-            System.out.println("Специальных товаров: " + count);
-        }
-    }
-
-    private boolean isProductByBasket() {
-        for (Product product : products) {
-            if (nonNull(product)) {
-                return true;
-            }
-        }
-        return false;
+        System.out.println("Итого: " + getTotalBasketValue());
+        System.out.println("Специальных товаров: " + count);
+        isEmptyBasket = true;
     }
 
     public boolean checkIfProductIsByBasket(String string) {

@@ -1,6 +1,4 @@
-package org.skypro.skyshop.product;
-
-import org.skypro.skyshop.search.Searchable;
+package org.skypro.skyshop.model;
 
 public abstract class Product implements Searchable {
 
