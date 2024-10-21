@@ -9,18 +9,17 @@ public class ProductBasket {
 
     private final Product[] products = new Product[5];
 
-    private boolean isBasketFull = true;
-
     public void addProduct(Product product) {
+        boolean isBasketFull = true;
         for (int i = 0; i < products.length; i++) {
             if (isNull(products[i])) {
                 products[i] = product;
                 isBasketFull = false;
                 break;
             }
-            if (isBasketFull) {
-                System.out.println("Невозможно добавить продукт");
-            }
+        }
+        if (isBasketFull) {
+            System.out.println("Невозможно добавить продукт");
         }
     }
 
