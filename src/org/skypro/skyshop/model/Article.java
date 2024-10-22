@@ -11,13 +11,8 @@ public class Article implements Searchable {
     }
 
     @Override
-    public String searchTerm() {
-        return getName();
-    }
-
-    @Override
     public String getContentType() {
-        return "ARTICLE";
+        return TypeContent.ARTICLE.getType();
     }
 
     @Override

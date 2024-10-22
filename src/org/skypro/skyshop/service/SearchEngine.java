@@ -17,9 +17,9 @@ public class SearchEngine {
 
     public Searchable[] search(String string) {
         int count = 0;
-        Searchable[] searchResult = new Searchable[5];
+        Searchable[] searchResult = new Searchable[MAX_SEARCH_RESULTS];
         for (Searchable element : elements) {
-            if (nonNull(element) && element.searchTerm().contains(string)) {
+            if (nonNull(element) && element.searchTerm(string)) {
                 searchResult[count++] = element;
                 if (count >= MAX_SEARCH_RESULTS) {
                     break;

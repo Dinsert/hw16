@@ -17,13 +17,13 @@ public abstract class Product implements Searchable {
     public abstract boolean isSpecial();
 
     @Override
-    public String searchTerm() {
-        return getName();
+    public boolean searchTerm(String term) {
+        return getName().contains(term.toUpperCase());
     }
 
     @Override
     public String getContentType() {
-        return "PRODUCT";
+        return TypeContent.PRODUCT.getType();
     }
 
     @Override
@@ -31,3 +31,16 @@ public abstract class Product implements Searchable {
         return nameProduct;
     }
 }
+
+enum TypeContent {
+    PRODUCT("PRODUCT"), ARTICLE("ARTICLE");
+    private String type;
+
+    TypeContent(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+    }
